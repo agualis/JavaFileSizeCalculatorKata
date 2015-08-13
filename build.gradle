@@ -2,8 +2,7 @@ group 'com.agualis'
 version '1.0'
 
 apply plugin: 'java'
-
-sourceCompatibility = 1.7
+apply plugin: 'net.saliman.cobertura'
 
 repositories {
     mavenCentral()
@@ -11,5 +10,19 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    classpath "net.saliman:gradle-cobertura-plugin:2.2.7"
+}
+
+test {
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'passed'
+    }
+}
+
+cobertura {
+    rootProject.subprojects.each {
+        coverageDirs << file("${it.name}/build/classes/main")
+    }
 }
 
