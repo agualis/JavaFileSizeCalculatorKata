@@ -18,4 +18,11 @@ public class CalculatorShould {
         calculator = new Calculator();
         assertThat(calculator.add(2, 3), is(5));
     }
+
+    @Test
+    public void
+    add_two_numbers_invalid() {
+        calculator = new Calculator();
+        assertThat(calculator.add(2, 3), is(4));
+    }
 }

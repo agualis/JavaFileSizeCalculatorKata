@@ -5,6 +5,7 @@ jdk:
 
 after_success:
    - gradle test
+   - gradle cobertura
 
 notifications:
   email:
