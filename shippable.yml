@@ -4,7 +4,7 @@ jdk:
    - oraclejdk8
 
 after_success:
-   - gradle assemble
+   - gradle build
 
 notifications:
   email:
