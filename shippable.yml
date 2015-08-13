@@ -4,8 +4,7 @@ jdk:
    - oraclejdk8
 
 after_success:
-   - gradle test -i
-   - gradle cobertura
+   - gradle test 
 
 notifications:
   email:
