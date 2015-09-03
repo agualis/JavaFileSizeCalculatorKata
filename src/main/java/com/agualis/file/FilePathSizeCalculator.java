@@ -7,13 +7,20 @@ public interface FilePathSizeCalculator {
     static FilePathSizeCalculator build(File javaFile) {
         if (javaFile.isFile()) {
             return new FileSizeCalculator(javaFile);
-        } else if (javaFile.isDirectory()){
-            return new DirectorySizeCalculator(javaFile);
         } else {
-            return new UnknownFile();
+            return new DirectorySizeCalculator(javaFile);
         }
+    }
+
+    static long size(File javaFile) {
+        return FilePathSizeCalculator.build(javaFile).size();
+    }
+
+    static long sizeBackwardsCompatible(File javaFile) {
+        return FilePathSizeCalculator.build(javaFile).sizeBackwardsCompatible();
     }
 
     public long size();
     public long sizeBackwardsCompatible();
+
 }

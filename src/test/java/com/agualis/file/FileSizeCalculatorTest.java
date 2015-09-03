@@ -48,21 +48,8 @@ public class FileSizeCalculatorTest {
         when(javaRootDir.isFile()).thenReturn(false);
         when(javaRootDir.listFiles()).thenReturn(new File[0]);
 
-        FilePathSizeCalculator fileSizeCalulator = FilePathSizeCalculator.build(javaRootDir);
-
-        assertThat(fileSizeCalulator.size(), is(0L));
+        assertThat(FilePathSizeCalculator.size(javaRootDir), is(0L));
     }
-
-    @Test public void
-    resource_is_not_file_not_directory() {
-        when(javaUnknownFile.isFile()).thenReturn(false);
-        when(javaUnknownFile.isDirectory()).thenReturn(false);
-
-        FilePathSizeCalculator fileSizeCalulator = FilePathSizeCalculator.build(javaUnknownFile);
-
-        assertThat(fileSizeCalulator.size(), is(0L));
-    }
-
 
     @Test public void
     one_file() {
@@ -77,9 +64,7 @@ public class FileSizeCalculatorTest {
         when(javaRootDir.listFiles()).thenReturn(new File[]{javaFile});
         when(javaRootDir.length()).thenReturn(FAKE_FILE_SIZE);
 
-        FilePathSizeCalculator directorySizeCalculator = FilePathSizeCalculator.build(javaRootDir);
-
-        assertThat(directorySizeCalculator.size(), is(FAKE_FILE_SIZE));
+        assertThat(FilePathSizeCalculator.size(javaRootDir), is(FAKE_FILE_SIZE));
     }
 
     @Test public void
@@ -87,9 +72,7 @@ public class FileSizeCalculatorTest {
         when(javaRootDir.isFile()).thenReturn(false);
         when(javaRootDir.listFiles()).thenReturn(new File[]{javaFile, javaFile2, javaFile3});
 
-        FilePathSizeCalculator directorySizeCalculator = FilePathSizeCalculator.build(javaRootDir);
-
-        assertThat(directorySizeCalculator.size(), is(FAKE_FILE_SIZE + FAKE_FILE_SIZE2 + FAKE_FILE_SIZE3));
+        assertThat(FilePathSizeCalculator.size(javaRootDir), is(FAKE_FILE_SIZE + FAKE_FILE_SIZE2 + FAKE_FILE_SIZE3));
     }
 
     @Test public void
@@ -99,9 +82,7 @@ public class FileSizeCalculatorTest {
         when(javaSubDir.isFile()).thenReturn(false);
         when(javaSubDir.listFiles()).thenReturn(new File[]{javaFile, javaFile2, javaFile3});
 
-        FilePathSizeCalculator directorySizeCalculator = FilePathSizeCalculator.build(javaRootDir);
-
-        assertThat(directorySizeCalculator.size(), is(FAKE_FILE_SIZE + FAKE_FILE_SIZE + FAKE_FILE_SIZE2 + FAKE_FILE_SIZE3));
+        assertThat(FilePathSizeCalculator.size(javaRootDir), is(FAKE_FILE_SIZE + FAKE_FILE_SIZE + FAKE_FILE_SIZE2 + FAKE_FILE_SIZE3));
     }
 
     @Test public void
@@ -111,10 +92,8 @@ public class FileSizeCalculatorTest {
         when(javaSubDir.isFile()).thenReturn(false);
         when(javaSubDir.listFiles()).thenReturn(new File[]{javaFile, javaFile2, javaFile3});
 
-        FilePathSizeCalculator directorySizeCalculator = FilePathSizeCalculator.build(javaRootDir);
-
         long expectedSize = 3 * (FAKE_FILE_SIZE + FAKE_FILE_SIZE2 + FAKE_FILE_SIZE3);
 
-        assertThat(directorySizeCalculator.size(), is(expectedSize));
+        assertThat(FilePathSizeCalculator.size(javaRootDir), is(expectedSize));
     }
 }

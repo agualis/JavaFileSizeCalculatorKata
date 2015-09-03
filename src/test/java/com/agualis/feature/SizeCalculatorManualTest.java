@@ -8,19 +8,19 @@ import java.io.File;
 public class SizeCalculatorManualTest {
 
     public static void main(String[] args) {
-        FilePathSizeCalculator directorySizeCalculator = FilePathSizeCalculator.build(
-                new File("/Users/agualis/github"));
 
         StopWatch stopwatch = new StopWatch();
 
+        File javaFile = new File("/Users/agualis/github/cloudtek");
+
         stopwatch.start();
-        System.out.println(directorySizeCalculator.size() + " bytes");
+        System.out.println(FilePathSizeCalculator.size(javaFile) + " bytes");
         stopwatch.stop();
         System.out.println(stopwatch.getTime() + " ms");
 
         stopwatch.reset();
         stopwatch.start();
-        System.out.println(directorySizeCalculator.sizeBackwardsCompatible() + " bytes");
+        System.out.println(FilePathSizeCalculator.sizeBackwardsCompatible(javaFile) + " bytes");
         stopwatch.stop();
         System.out.println(stopwatch.getTime() + " ms");
 
