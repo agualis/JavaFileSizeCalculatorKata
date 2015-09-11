@@ -11,7 +11,7 @@ public class SizeCalculatorManualTest {
 
         StopWatch stopwatch = new StopWatch();
 
-        File javaFile = new File("/Users/agualis/github/cloudtek");
+        File javaFile = new File("/Users/agualis/github/");
 
         stopwatch.start();
         System.out.println(FilePathSizeCalculator.size(javaFile) + " bytes");
