@@ -14,7 +14,6 @@ public class DirectorySizeCalculator implements FilePathSizeCalculator {
         if (isEmptyDirectory()) return 0;
 
         return Arrays.stream(javaFile.listFiles())
-                .parallel()
                 .mapToLong(file -> FilePathSizeCalculator.build(file).size())
                 .sum();
     }
