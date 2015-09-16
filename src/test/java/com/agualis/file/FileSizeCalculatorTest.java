@@ -58,7 +58,7 @@ public class FileSizeCalculatorTest {
     }
 
     @Test public void
-    one_file_flat_directory() {
+    one_file_in_flat_directory() {
         when(javaRootDir.isFile()).thenReturn(false);
         when(javaRootDir.listFiles()).thenReturn(new File[]{javaFile});
         when(javaRootDir.length()).thenReturn(FAKE_FILE_SIZE);
@@ -67,7 +67,7 @@ public class FileSizeCalculatorTest {
     }
 
     @Test public void
-    several_files_flat_directory() {
+    several_files_in_flat_directory() {
         when(javaRootDir.isFile()).thenReturn(false);
         when(javaRootDir.listFiles()).thenReturn(new File[]{javaFile, javaFile2, javaFile3});
 
@@ -76,7 +76,7 @@ public class FileSizeCalculatorTest {
     }
 
     @Test public void
-    one_file_in_root_and_several_files_subdirectory() {
+    one_file_in_root_and_several_files_in_subdirectory() {
         when(javaRootDir.isFile()).thenReturn(false);
         when(javaRootDir.listFiles()).thenReturn(new File[]{javaSubDir, javaFile});
         when(javaSubDir.isFile()).thenReturn(false);

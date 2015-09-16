@@ -5,7 +5,7 @@ import org.apache.commons.lang3.time.StopWatch;
 
 import java.io.File;
 
-public class SizeCalculatorManualTest {
+public class FileSizeCalculatorManualTest {
 
     public static void main(String[] args) {
 
